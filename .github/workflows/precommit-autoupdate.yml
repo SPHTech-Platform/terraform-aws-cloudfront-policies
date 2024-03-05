@@ -1,0 +1,37 @@
+name: Pre-commit auto-update
+
+on:
+  # every sunday at midnight
+  schedule:
+    - cron: "0 0 * * 0"
+  # on demand
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  checks: read
+  contents: write #require this to write to repo
+  pull-requests: write #require this to create PR
+
+jobs:
+  auto-update:
+    runs-on:
+      - self-hosted
+      - platform-eng-ent
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+
+      - name: Install pre-commit and run autoupdate
+        run: |
+          pip install pre-commit
+          pre-commit autoupdate
+
+      - uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update/pre-commit-hooks
+          title: Update pre-commit hooks
+          commit-message: "chore: update pre-commit hooks"
+          body: Update versions of pre-commit hooks to latest version.
