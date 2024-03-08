@@ -1,27 +1,7 @@
-# Terraform Modules Template
+# AWS Cloudfront Policies
 
-<!-- BEGIN_TF_DOCS -->
-## Requirements
+This module creates a set of AWS Cloudfront policies.
 
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
+- [cache-policies](modules/cache)
+- [origin-request-policies](modules/origin-request)
+- [response-header-policies](modules/response-headers)
