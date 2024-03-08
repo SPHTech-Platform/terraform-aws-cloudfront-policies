@@ -13,7 +13,7 @@ variable "cors" {
   description = <<EOF
     A configuration for a set of HTTP response headers for CORS(Cross-Origin Resource Sharing). `cors` as defined below.
     `enabled` - Whether to enable CORS configuration for the response headers policy .
-    `orgin_override` - Whether CloudFront override the response from the origin which contains one of the CORS headers specified in this policy. Defaults to `true`.
+    `override` - Whether CloudFront override the response from the origin which contains one of the CORS headers specified in this policy. Defaults to `true`.
     `access_control_allow_credentials` - Whether CloudFront adds the `Access-Control-Allow-Credentials` header in responses to CORS requests. When enabled, CloudFront adds the `Access-Control-Allow-Credentials: true` header in responses to CORS requests. Otherwise, CloudFront doesn't add this header to responses. Defaults to `false`.
     `access_control_allow_headers` - A set of HTTP header names for CloudFront to include as values for the `Access-Control-Allow-Headers` HTTP response header in responses to CORS preflight requests. Defaults to `["*"]` (All headers).
     `access_control_allow_methods` - A set of HTTP methods for CloudFront to include as values for the `Access-Control-Allow-Methods` header in responses to CORS preflight requests. Valid values are `GET`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, or `ALL`). Defaults to `ALL` (All methods).

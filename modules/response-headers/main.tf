@@ -7,7 +7,7 @@ resource "aws_cloudfront_response_headers_policy" "this" {
     iterator = cors
 
     content {
-      origin_override = cors.value.orgin_override
+      origin_override = cors.value.override
 
       access_control_allow_credentials = cors.value.access_control_allow_credentials
 
