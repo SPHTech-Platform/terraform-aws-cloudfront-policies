@@ -19,7 +19,7 @@ module "custom_resp_headers" {
 module "override_default" {
   source = "../../modules/response-headers"
 
-  name = "custom-response-headers"
+  name = "override-default-response-headers"
 
   xss_protection_header = {
     enabled = false
