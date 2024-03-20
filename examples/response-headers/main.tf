@@ -2,14 +2,6 @@ module "custom_resp_headers" {
   source = "../../modules/response-headers"
 
   name = "custom-response-headers"
-  strict_transport_security_header = {
-    enabled  = true
-    override = true
-
-    max_age            = 31536000
-    include_subdomains = true
-    preload            = true
-  }
 
   custom_headers = [
     {
@@ -21,5 +13,15 @@ module "custom_resp_headers" {
   server_timing_header = {
     enabled       = true
     sampling_rate = 100
+  }
+}
+
+module "override_default" {
+  source = "../../modules/response-headers"
+
+  name = "override-default-response-headers"
+
+  xss_protection_header = {
+    enabled = false
   }
 }

@@ -105,7 +105,7 @@ variable "content_type_options_header" {
     `override` - Whether CloudFront overrides the `X-Content-Type-Options` response header with the header received from the origin. Defaults to `true`.
   EOF
   type = object({
-    enabled  = optional(bool, false)
+    enabled  = optional(bool, true)
     override = optional(bool, true)
   })
   default  = {}
@@ -124,9 +124,9 @@ variable "frame_options_header" {
       - `SAMEORIGIN`: The page can only be displayed if all ancestor frames are same origin to the page itself.
   EOF
   type = object({
-    enabled  = optional(bool, false)
+    enabled  = optional(bool, true)
     override = optional(bool, true)
-    value    = optional(string, "")
+    value    = optional(string, "DENY")
   })
   default  = {}
   nullable = false
@@ -150,9 +150,9 @@ variable "referrer_policy_header" {
     - `strict-origin-when-cross-origin`: Send the origin, path, and querystring when performing a same-origin request. For cross-origin requests send the origin (only) when the protocol security level stays same (HTTPS→HTTPS). Don't send the Referer header to less secure destinations (HTTPS→HTTP).
   EOF
   type = object({
-    enabled  = optional(bool, false)
+    enabled  = optional(bool, true)
     override = optional(bool, true)
-    value    = optional(string, "strict-origin-when-cross-origin")
+    value    = optional(string, "same-origin")
   })
   default  = {}
   nullable = false
@@ -174,12 +174,12 @@ variable "strict_transport_security_header" {
     `preload` - Whether CloudFront includes the `preload` directive in the header value. However, it is not part of the HSTS specification and should not be treated as official. Defaults to `false`.
   EOF
   type = object({
-    enabled  = optional(bool, false)
+    enabled  = optional(bool, true)
     override = optional(bool, true)
 
     max_age            = optional(number, 60 * 60 * 24 * 365)
-    include_subdomains = optional(bool, false)
-    preload            = optional(bool, false)
+    include_subdomains = optional(bool, true)
+    preload            = optional(bool, true)
   })
   default  = {}
   nullable = false
@@ -198,11 +198,11 @@ variable "xss_protection_header" {
     `report` - A reporting URI (in the `report` field), which determines whether CloudFront includes the `report='reporting URI'` directive in the header value. You can't specify a reporting URI when block is enabled.
   EOF
   type = object({
-    enabled  = optional(bool, false)
+    enabled  = optional(bool, true)
     override = optional(bool, true)
 
     filtering_enabled = optional(bool, true)
-    block             = optional(bool, false)
+    block             = optional(bool, true)
     report            = optional(string, "")
   })
   default  = {}
