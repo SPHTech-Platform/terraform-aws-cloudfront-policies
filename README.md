@@ -1,5 +1,7 @@
 # AWS Cloudfront Policies
 
+Inspired by the community module by tedialabs <https://github.com/tedilabs/terraform-aws-cloudfront>. We did not fork the module because we wanted to remove the cloudfront distribution creation and focus on the policies.
+
 This module creates a set of AWS Cloudfront policies.
 
 - [cache-policies](modules/cache)
