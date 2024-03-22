@@ -47,12 +47,16 @@ resource "aws_cloudfront_response_headers_policy" "this" {
     }
   }
 
-  remove_headers_config {
-    dynamic "items" {
-      for_each = var.remove_headers
+  dynamic "remove_headers_config" {
+    for_each = length(var.remove_headers) > 0 ? [1] : []
 
-      content {
-        header = items.value
+    content {
+      dynamic "items" {
+        for_each = var.remove_headers
+
+        content {
+          header = items.value
+        }
       }
     }
   }
