@@ -35,4 +35,8 @@ resource "aws_cloudfront_origin_request_policy" "this" {
       }
     }
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
