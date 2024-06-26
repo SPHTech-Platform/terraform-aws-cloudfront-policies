@@ -136,4 +136,8 @@ resource "aws_cloudfront_response_headers_policy" "this" {
     enabled       = var.server_timing_header.enabled
     sampling_rate = var.server_timing_header.sampling_rate
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

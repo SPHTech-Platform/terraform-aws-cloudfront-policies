@@ -44,4 +44,8 @@ resource "aws_cloudfront_cache_policy" "this" {
       }
     }
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
